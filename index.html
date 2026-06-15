@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TaskFlow – A professional, responsive To-Do application to manage your daily tasks with ease."
+    />
+    <meta name="author" content="TaskFlow" />
+    <title>To-Do List Web App</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ========================
+         HEADER / NAVBAR
+    ========================== -->
+    <header class="app-header">
+      <div class="header-inner">
+        <!-- Logo -->
+        <!-- SVG Logo matching the To-Do List Web App branding -->
+        <a href="#" class="logo" aria-label="To-Do List Web App logo">
+          <svg class="logo-svg" viewBox="0 0 260 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+            <!-- ===== CLIPBOARD BODY ===== -->
+            <!-- Shadow -->
+            <rect x="6" y="12" width="52" height="58" rx="5" fill="rgba(0,0,0,0.08)"/>
+            <!-- Green border frame -->
+            <rect x="4" y="10" width="52" height="58" rx="5" fill="#1db87a" />
+            <!-- White paper -->
+            <rect x="8" y="15" width="44" height="50" rx="3" fill="#f0f4f8" />
+            <!-- Paper shine -->
+            <rect x="8" y="15" width="44" height="14" rx="3" fill="white" opacity="0.55"/>
+
+            <!-- ===== CLIP (GOLD) ===== -->
+            <!-- Clip body -->
+            <rect x="22" y="4" width="16" height="14" rx="3" fill="#f5a623" />
+            <!-- Clip highlight -->
+            <rect x="24" y="5" width="5" height="6" rx="2" fill="#ffc84a" opacity="0.7"/>
+            <!-- Clip hole -->
+            <rect x="26" y="7" width="8" height="5" rx="2" fill="#e8891a" />
+            <!-- Clip base bar -->
+            <rect x="18" y="15" width="24" height="5" rx="2" fill="#d4880f" />
+
+            <!-- ===== CHECKLIST ROWS ===== -->
+            <!-- Row 1: checked (orange) -->
+            <rect x="14" y="28" width="9" height="9" rx="2" fill="#f5a623" />
+            <polyline points="15.5,32.5 17.5,35 21.5,29.5" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="26" y="30" width="20" height="2.5" rx="1.2" fill="#c8d6e5" />
+            <rect x="26" y="34" width="14" height="2" rx="1" fill="#dde6ef" />
+
+            <!-- Row 2: checked (orange) -->
+            <rect x="14" y="41" width="9" height="9" rx="2" fill="#f5a623" />
+            <polyline points="15.5,45.5 17.5,48 21.5,42.5" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="26" y="43" width="20" height="2.5" rx="1.2" fill="#c8d6e5" />
+            <rect x="26" y="47" width="16" height="2" rx="1" fill="#dde6ef" />
+
+            <!-- Row 3: unchecked (empty) -->
+            <rect x="14" y="54" width="9" height="9" rx="2" fill="none" stroke="#aabccf" stroke-width="1.5"/>
+            <rect x="26" y="56" width="20" height="2.5" rx="1.2" fill="#c8d6e5" />
+            <rect x="26" y="60" width="12" height="2" rx="1" fill="#dde6ef" />
+
+            <!-- ===== PENCIL ===== -->
+            <!-- Pencil body (teal, rotated ~-40deg from top-right) -->
+            <g transform="rotate(-42, 46, 36)">
+              <!-- Body -->
+              <rect x="40" y="14" width="11" height="38" rx="3" fill="#1aacaa" />
+              <!-- Shine stripe -->
+              <rect x="42" y="14" width="3" height="38" rx="1.5" fill="#22c9c7" opacity="0.5"/>
+              <!-- Eraser band -->
+              <rect x="40" y="14" width="11" height="5" rx="2" fill="#b0bec5" />
+              <!-- Eraser tip -->
+              <rect x="41" y="10" width="9" height="5" rx="2" fill="#f08080" />
+              <!-- Pencil tip wood -->
+              <polygon points="40,52 51,52 45.5,60" fill="#e8c58a" />
+              <!-- Pencil tip lead -->
+              <polygon points="43,56 48,56 45.5,60" fill="#555" />
+            </g>
+
+            <!-- ===== SPARKLES ===== -->
+            <text x="2" y="12" font-size="7" fill="#f5c518">✦</text>
+            <text x="56" y="22" font-size="5" fill="#1db87a">✦</text>
+            <text x="1" y="36" font-size="4" fill="#1aacaa" opacity="0.8">●</text>
+            <text x="57" y="50" font-size="4" fill="#f5a623" opacity="0.7">●</text>
+
+            <!-- ===== TEXT: TO-DO LIST ===== -->
+            <text
+              x="72" y="36"
+              font-family="Inter, Arial, sans-serif"
+              font-size="22"
+              font-weight="900"
+              letter-spacing="0.5"
+              class="logo-title-text"
+            >TO-DO LIST</text>
+
+            <!-- ===== TEXT: WEB APP (with dashes) ===== -->
+            <!-- Left dash -->
+            <rect x="72" y="47" width="14" height="2" rx="1" class="logo-dash" />
+            <!-- WEB APP text -->
+            <text
+              x="90" y="52"
+              font-family="Inter, Arial, sans-serif"
+              font-size="11"
+              font-weight="700"
+              letter-spacing="2.5"
+              fill="#1db87a"
+            >WEB APP</text>
+            <!-- Right dash -->
+            <rect x="149" y="47" width="14" height="2" rx="1" fill="#1db87a" />
+          </svg>
+        </a>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Dark / Light Mode Toggle -->
+          <button
+            id="themeToggleBtn"
+            class="icon-btn"
+            title="Toggle Dark/Light Mode"
+            aria-label="Toggle theme"
+          >
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="app-main">
+
+      <!-- ---- Hero Banner ---- -->
+      <section class="hero" aria-label="Welcome banner">
+        <p class="hero-greeting" id="heroGreeting">Good morning!</p>
+        <h1 class="hero-title">What's on your agenda today?</h1>
+        <p class="hero-subtitle" id="heroDate"></p>
+      </section>
+
+      <!-- ---- Stats Bar ---- -->
+      <section class="stats-bar" aria-label="Task statistics">
+        <div class="stat-card" id="statTotal">
+          <span class="stat-number" id="totalCount">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-card stat-pending" id="statPending">
+          <span class="stat-number" id="pendingCount">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-card stat-completed" id="statCompleted">
+          <span class="stat-number" id="completedCount">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-card stat-progress" id="statProgress">
+          <span class="stat-number" id="progressPct">0%</span>
+          <span class="stat-label">Progress</span>
+        </div>
+      </section>
+
+      <!-- ---- Input Card ---- -->
+      <section class="input-card" aria-label="Add new task">
+        <div class="input-wrapper">
+          <span class="input-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+          <input
+            type="text"
+            id="taskInput"
+            class="task-input"
+            placeholder="Add a new task… (Press Enter or click +)"
+            maxlength="200"
+            autocomplete="off"
+            aria-label="New task input"
+          />
+          <span class="char-counter" id="charCounter">0/200</span>
+        </div>
+
+        <div class="input-meta">
+          <!-- Priority selector -->
+          <div class="priority-selector" role="group" aria-label="Task priority">
+            <button
+              class="priority-btn active"
+              data-priority="low"
+              id="priorityLow"
+              aria-pressed="true"
+              title="Low priority"
+            >
+              <i class="fa-solid fa-circle-dot"></i> Low
+            </button>
+            <button
+              class="priority-btn"
+              data-priority="medium"
+              id="priorityMedium"
+              aria-pressed="false"
+              title="Medium priority"
+            >
+              <i class="fa-solid fa-circle-dot"></i> Medium
+            </button>
+            <button
+              class="priority-btn"
+              data-priority="high"
+              id="priorityHigh"
+              aria-pressed="false"
+              title="High priority"
+            >
+              <i class="fa-solid fa-circle-dot"></i> High
+            </button>
+          </div>
+
+          <!-- Add button -->
+          <button id="addTaskBtn" class="add-btn" aria-label="Add task">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Task</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ---- Controls Row ---- -->
+      <section class="controls-row" aria-label="Search and filter">
+        <!-- Search -->
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search tasks…"
+            aria-label="Search tasks"
+          />
+          <button
+            class="clear-search-btn"
+            id="clearSearchBtn"
+            style="display:none"
+            aria-label="Clear search"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Task filter">
+          <button
+            class="filter-tab active"
+            data-filter="all"
+            id="filterAll"
+            role="tab"
+            aria-selected="true"
+          >All</button>
+          <button
+            class="filter-tab"
+            data-filter="pending"
+            id="filterPending"
+            role="tab"
+            aria-selected="false"
+          >Pending</button>
+          <button
+            class="filter-tab"
+            data-filter="completed"
+            id="filterCompleted"
+            role="tab"
+            aria-selected="false"
+          >Completed</button>
+        </div>
+
+        <!-- Clear completed -->
+        <button id="clearCompletedBtn" class="clear-btn" aria-label="Clear all completed tasks">
+          <i class="fa-solid fa-trash-can"></i>
+          <span>Clear Completed</span>
+        </button>
+      </section>
+
+      <!-- ---- Task Lists ---- -->
+      <div class="tasks-container">
+
+        <!-- Pending Section -->
+        <section class="task-section" id="pendingSection" aria-label="Pending tasks">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-regular fa-clock"></i> Pending Tasks
+              <span class="badge" id="pendingBadge">0</span>
+            </h2>
+          </div>
+          <ul class="task-list" id="pendingList" role="list" aria-label="Pending task list">
+            <!-- Pending tasks rendered by JS -->
+          </ul>
+          <div class="empty-state" id="pendingEmpty" style="display:none">
+            <div class="empty-icon"><i class="fa-solid fa-rocket"></i></div>
+            <p class="empty-title">All clear!</p>
+            <p class="empty-sub">No pending tasks. Add one above.</p>
+          </div>
+        </section>
+
+        <!-- Completed Section -->
+        <section class="task-section" id="completedSection" aria-label="Completed tasks">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-circle-check"></i> Completed Tasks
+              <span class="badge badge-success" id="completedBadge">0</span>
+            </h2>
+          </div>
+          <ul class="task-list" id="completedList" role="list" aria-label="Completed task list">
+            <!-- Completed tasks rendered by JS -->
+          </ul>
+          <div class="empty-state" id="completedEmpty" style="display:none">
+            <div class="empty-icon"><i class="fa-regular fa-star"></i></div>
+            <p class="empty-title">Nothing here yet!</p>
+            <p class="empty-sub">Complete a task to see it here.</p>
+          </div>
+        </section>
+
+      </div><!-- /tasks-container -->
+
+    </main>
+
+    <!-- ========================
+         EDIT MODAL
+    ========================== -->
+    <div
+      class="modal-overlay"
+      id="editModalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="editModalTitle"
+    >
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 id="editModalTitle" class="modal-title">
+            <i class="fa-solid fa-pen"></i> Edit Task
+          </h2>
+          <button class="icon-btn" id="closeModalBtn" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea
+            id="editTaskInput"
+            class="edit-textarea"
+            maxlength="200"
+            rows="3"
+            aria-label="Edit task text"
+          ></textarea>
+          <div class="priority-selector modal-priority" role="group" aria-label="Edit task priority">
+            <button class="priority-btn" data-priority="low" id="editPriorityLow" aria-pressed="false">
+              <i class="fa-solid fa-circle-dot"></i> Low
+            </button>
+            <button class="priority-btn" data-priority="medium" id="editPriorityMedium" aria-pressed="false">
+              <i class="fa-solid fa-circle-dot"></i> Medium
+            </button>
+            <button class="priority-btn" data-priority="high" id="editPriorityHigh" aria-pressed="false">
+              <i class="fa-solid fa-circle-dot"></i> High
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="cancelEditBtn">Cancel</button>
+          <button class="btn-primary" id="saveEditBtn">
+            <i class="fa-solid fa-floppy-disk"></i> Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================
+         TOAST NOTIFICATION
+    ========================== -->
+    <div
+      id="toastContainer"
+      class="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <!-- ========================
+         FOOTER
+    ========================== -->
+    <footer class="app-footer">
+      <p>Built with <i class="fa-solid fa-heart" style="color:var(--accent-red)"></i> using HTML, CSS &amp; JavaScript &nbsp;·&nbsp; TaskFlow &copy; 2026</p>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
